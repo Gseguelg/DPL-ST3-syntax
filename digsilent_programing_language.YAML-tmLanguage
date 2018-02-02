@@ -1,0 +1,66 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: DIgSILENT Programming Language
+scopeName: source.DPL
+fileTypes: [DPL, dpl]
+uuid: afa70623-f245-4d17-9726-c78cf211f177
+
+patterns:
+# Strings de texto
+- comment:  String de texto.
+  name: string.quoted.single.DPL
+  match: ('[^']+')
+
+# Comentarios
+- comment: comentario de la sintaxis.
+  name: comment.line.exclamation.DPL
+  match: \!.*\n
+  # match: (!).*\n
+
+# Números
+- comment: números
+  name: constant.numeric.DPL
+  match: '(?<=[\s\-\+\*\/\\=:\[\(\{,]|^)\d*\.?\d+([eE][+-]?\d)?([0-9&&[^\.]])*(i|j)?\b'
+
+# Controladores de flujo
+- comment: Controles de Flujo
+  name: keyword.control.DPL
+  match: (while|for|select|if)(?=\()|(?<=})(else)(?=\{)
+
+# Operadores lógicos
+- comment: Operadores lógicos.
+  name: keyword.control.DPL
+  match: \.(or|OR)\.
+
+# Parámetros de objetos
+- comment: Definición de parámetros.
+  name: variable.complex.ssraw
+  # name: invalid.illegal.ssraw
+  match: \w+:(loc_name|m|P|bus1|c|nntap|outserv)(:\w+)*
+
+# Palabras del sistema
+- comment: Inicialización de Variables.
+  name: keyword.other.DPL
+  match: (int|double|string|set|object)\s
+
+- comment: Funciones de Variables.
+  name: keyword.other.DPL
+  match: (vardef|inc0|inc|intervalinc)(?=\()
+
+- comment: Objetos principales.
+  name: keyword.other.DPL
+  match: (SEL)(?=\.)
+
+- comment: Metodos de Objetos. 
+  name: keyword.other.DPL
+  match: (?<=\.)(First|ShowFullName|Next|AllLines|Execute|Add)(?=\()
+
+- comment: Funciones del Sistema.
+  name: keyword.other.DPL
+  match: (ClearOutput|SetOutputWindowState|incfix|fopen|fclose|AllRelevant|output|[sf]*printf)(?=\()
+
+- comment: Funciones Matemáticas.
+  name: keyword.other.DPL
+  match: (exp|min|max|strcmp)(?=\()
+
+...
