@@ -11,17 +11,17 @@ patterns:
   name: string.quoted.single.DPL
   match: ('[^']+')
 
-# Error de syntaxis
-- comment: Falta de punto y coma al final de la linea.
-  name: invalid.illegal.ssraw
-  match: ([^,;\s]*)(?=\s*!)|([^;]\n)$
-
 # Comentarios
 - comment: comentario de la sintaxis.
   name: comment.line.exclamation.DPL
   match: \!.*\n*
   # match: (!).*\n
 
+# Error de syntaxis
+- comment: Falta de punto y coma al final de la linea.
+  name: invalid.illegal.ssraw
+  match: ([^,;\{\}\s]*)(?=\s*!)|([^,;\{\}\s]\n)$
+  
 # Números
 - comment: números
   name: constant.numeric.DPL
