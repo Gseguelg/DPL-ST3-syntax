@@ -11,10 +11,15 @@ patterns:
   name: string.quoted.single.DPL
   match: ('[^']+')
 
+# Error de syntaxis
+- comment: Falta de punto y coma al final de la linea.
+  name: invalid.illegal.ssraw
+  match: ([^,;\s]*)(?=\s*!)|([^;]\n)$
+
 # Comentarios
 - comment: comentario de la sintaxis.
   name: comment.line.exclamation.DPL
-  match: \!.*\n
+  match: \!.*\n*
   # match: (!).*\n
 
 # Números
@@ -25,7 +30,7 @@ patterns:
 # Controladores de flujo
 - comment: Controles de Flujo
   name: keyword.control.DPL
-  match: (while|for|select|if)(?=\()|(?<=})(else)(?=\{)
+  match: (while|for|select|if)(?=\()|(?<=})(?<=\})\s*else\s*(?=\{)
 
 # Operadores lógicos
 - comment: Operadores lógicos.
