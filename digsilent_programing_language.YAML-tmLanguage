@@ -3,13 +3,25 @@
 name: DIgSILENT Programming Language
 scopeName: source.DPL
 fileTypes: [DPL, dpl]
-uuid: afa70623-f245-4d17-9726-c78cf211f177
 
 patterns:
+# Errores de syntaxis
+- comment: Falta de punto y coma al final de la linea.
+  name: invalid.illegal.ssraw
+  # match: (?<!;|,|\{|\}|\s)(?!^\s)\s*$ # For previous symbol if this isn't ';', ',', '{', '}', 'space', 'tab' or 'newline', and the next symbol isn't a 'space', 'tab' or 'newline' in the first place of the line; match all 'spaces', 'tabs' or 'newlines' until end on the line ($).
+  # match: (?<!;|,|\{|\}|\s)(?!^\s)\s*(?=!.*$) # For previous symbol if this isn't ';', ',', '{', '}', 'space', 'tab' or 'newline', and the next symbol isn't a 'space', 'tab' or 'newline' in the first place of the line; match all 'spaces', 'tabs' or 'newlines' until a comment '!' with any text until end on the line ($) is found.
+  match:  (?<!;|,|\{|\}|\s)(?!^\s)\s*$|(?<!;|,|\{|\}|\s)(?!^\s)\s*(?=!.*$) # or between previos matches.
+
+
 # Strings de texto
 - comment:  String de texto.
   name: string.quoted.single.DPL
-  match: ('[^']+')
+  match: ('[^']*')
+
+# Strings no pueden usarse con doble comillas.
+# - comment:  String de texto.
+#   name: string.quoted.double.DPL
+#   match: ("[^"]*")
 
 # Comentarios
 - comment: comentario de la sintaxis.
@@ -17,12 +29,7 @@ patterns:
   match: \!.*\n*
   # match: (!).*\n
 
-# Error de syntaxis
-- comment: Falta de punto y coma al final de la linea.
-  name: invalid.illegal.ssraw
-  match: ([^,;\{\}\s]*)(?=\s*!)|([^,;\{\}\s]\n)$
-  
-# Números
+# Syntaxis para Números
 - comment: números
   name: constant.numeric.DPL
   match: '(?<=[\s\-\+\*\/\\=:\[\(\{,]|^)\d*\.?\d+([eE][+-]?\d)?([0-9&&[^\.]])*(i|j)?\b'
@@ -30,18 +37,18 @@ patterns:
 # Controladores de flujo
 - comment: Controles de Flujo
   name: keyword.control.DPL
-  match: (while|for|select|if)(?=\()|(?<=})(?<=\})\s*else\s*(?=\{)
+  match: (do|while|for|select|if)(?=\()|(?<=})(?<=\})\s*else\s*(?=\{)
 
 # Operadores lógicos
 - comment: Operadores lógicos.
   name: keyword.control.DPL
-  match: \.(or|OR)\.
+  match: \.(and|or|nand|nor|eor)\.
 
 # Parámetros de objetos
 - comment: Definición de parámetros.
   name: variable.complex.ssraw
   # name: invalid.illegal.ssraw
-  match: \w+:(loc_name|m|P|bus1|c|nntap|outserv)(:\w+)*
+  match: \w+:(e|m|P|c|bus1|loc_name|nntap|outserv|GPSlat|GPSlon)(:\w+)*
 
 # Palabras del sistema
 - comment: Inicialización de Variables.
@@ -58,7 +65,7 @@ patterns:
 
 - comment: Metodos de Objetos. 
   name: keyword.other.DPL
-  match: (?<=\.)(First|ShowFullName|Next|AllLines|Execute|Add)(?=\()
+  match: (?<=\.)(First|ShowFullName|Next|AllLines|Execute|Add|GetFullName)(?=\()
 
 - comment: Funciones del Sistema.
   name: keyword.other.DPL
