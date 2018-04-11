@@ -1,0 +1,55 @@
+{
+	// requieres PackageDev module
+	"scope": "source.DPL, source.dpl",
+
+	"completions": 
+	[
+		/* Varaible Types */
+		{ "trigger": "int", "contents": "int $1" },
+		{ "trigger": "double", "contents": "double $1" },
+		{ "trigger": "string", "contents": "string $1" },
+		{ "trigger": "set", "contents": "set $1	! Set" },
+		{ "trigger": "object", "contents": "object $1 ! Object" },
+		// { "trigger": "i|in|int", "contents": "int ${1:}" },
+		
+		/* Initialization Functions */
+		{ "trigger": "Init", "contents": "Init( ${1:1} );" },
+
+		/* Output Functions */
+		{ "trigger": "printf", "contents": "printf( '${1:%s }',' ${2:Texto}' );$0" },
+		{ "trigger": "sprintf", "contents": "sprintf( '${1:%s }', '${2:Texto}' );$0" },
+		{ "trigger": "output", "contents": "output( ${1:} );" },
+		{ "trigger": "ClearOutput", "contents": "ClearOutput();	!Clear output window" },
+		{ "trigger": "Warn\tWarning message", "contents": "Warn();" },
+
+		/* Controladores de flujo */
+		{ "trigger": "for\tCiclo for para números", "contents": "for ( ${1:i} = ${2:1}; ; ${3:${1:i} < 10}; ${1:1} += ${4:1} ){\n\t${5}$0\n}" },
+		{ "trigger": "for\tCiclo for para objetos", "contents": "for ( ${1:Objeto} = ${2:Objetos}.First() ; ${1:Objeto}; ${1:Objeto} = ${2:Objetos}.Next() ){\n\t${3}$0\n}" },
+		{ "trigger": "while\tCiclo while", "contents": "for ( ${1:Objeto} = ${2:Objetos}.First() ; ${1:Objeto}; ${1:Objeto} = ${2:Objetos}.Next() ){\n\t${3}\n}" },
+		{ "trigger": "if - else", "contents": "if ( ${1:Valor1 = Valor2} ) {\n\t$2\n} else {\n\t$3\n}" },
+
+		/* Other Functions */
+		{ "trigger": "AllRelevant", "contents": "AllRelevant( ${1:} );" },
+		{ "trigger": "Random", "contents": "Random(${1:LowValue}, ${2:HighValue});" },
+		{ "trigger": "round", "contents": "round( ${1:} ); !Round a number" },
+		{ "trigger": "SortToName\t0:asc | 1 des", "contents": "SortToName(${1:0});" },
+		{ "trigger": "SortToColumn", "contents": "SortToColumn($1);" },
+		{ "trigger": "EchoOff\tDeactivate user interface", "contents": "EchoOff();" },
+		{ "trigger": "Execute\tExecutes object", "contents": "Execute();" },
+		{ "trigger": "GetFullName\tFull name from object", "contents": "GetFullName();" },
+		{ "trigger": "Size", "contents": "Size();" },
+		{ "trigger": "Get", "contents": "Get(${1:index});" },
+		{ "trigger": "Set", "contents": "Set(${1:index}, ${2:value});" },
+		{ "trigger": "Sort\t0:asc | 1 des", "contents": "Sort($1);" },
+		{ "trigger": "NRow();\tNumber of Rows", "contents": "NRow();" },
+		{ "trigger": "NCol();\tNumber of Columns", "contents": "NCol();" },
+		{ "trigger": "fopen\topen file", "contents": "fopen(${1:Name}, '${2:rw}', ${3:1});" },
+		{ "trigger": "fclose\topen file", "contents": "fclose(${1:1});	!Close file" },
+		{ "trigger": "fscanf\t", "contents": "fscanf(${1:1}); " },
+		{ "trigger": "fprintf\t", "contents": "fprintf(${1:1}, '${2:%f}', ${3:var});	!Write value to opened file" },
+		
+		/* common objects parameters */
+		{ "trigger": "outserv;\tout of service", "contents": "outserv" },
+		{ "trigger": "plini;\tactive power load", "contents": "plini" },
+	]
+}
