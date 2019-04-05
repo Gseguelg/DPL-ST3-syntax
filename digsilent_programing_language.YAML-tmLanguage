@@ -3,6 +3,7 @@
 name: DIgSILENT Programming Language
 scopeName: source.DPL
 fileTypes: [DPL, dpl]
+# uuid: afa70623-f245-4d17-9726-c78cf211f177
 
 patterns:
 # Errores de syntaxis
@@ -37,7 +38,7 @@ patterns:
 # Controladores de flujo
 - comment: Controles de Flujo
   name: keyword.control.DPL
-  match: (do|while|for|select|if)(?=\()|(?<=})(?<=\})\s*else\s*(?=\{)
+  match: (do|while|for|select|if)(?=\()|(?<=})(?<=\})\s*else\s*(?=\{)|(break)
 
 # Operadores lógicos
 - comment: Operadores lógicos.
@@ -65,14 +66,34 @@ patterns:
 
 - comment: Metodos de Objetos. 
   name: keyword.other.DPL
-  match: (?<=\.)(First|ShowFullName|Next|AllLines|Execute|Add|GetFullName)(?=\()
+  match: (?<=\.)(ShowFullName|Execute|Add|GetFullName|GetContents|First|Next)(?=\()
+
+- comment: Metodos de SetSelect. 
+  name: keyword.other.DPL
+  match: (?<=\.)(All|GetAll|AddRed|Clear|AllElm|AllLines|AllBars|AllLoads|AllAsm|AllSym|AllTypeLne|AllBreakers|AllCloseBreakers|AllOpenBreakers)(?=\()
 
 - comment: Funciones del Sistema.
   name: keyword.other.DPL
-  match: (ClearOutput|SetOutputWindowState|incfix|fopen|fclose|AllRelevant|output|[sf]*printf)(?=\()
+  match: (SetOutputWindowState|incfix|fopen|fclose|AllRelevant|GetActiveScenario|ResetCalculation|EchoOff|EchoOn|GetActiveProject)(?=\()
+
+- comment: Funciones del Sistema para imprimir.
+  name: keyword.other.DPL
+  match: (ClearOutput|output|[sf]*printf|Info|Warn|Error)(?=\()
+
+- comment: Funciones de *.IntScenario.
+  name: keyword.other.DPL
+  match: (Activate|Deactivate)(?=\()
+
+- comment: Funciones de *.IntPrjfolder.
+  name: keyword.other.DPL
+  match: (GetProjectFolder)(?=\()
 
 - comment: Funciones Matemáticas.
   name: keyword.other.DPL
   match: (exp|min|max|strcmp)(?=\()
+
+- comment: Funciones con Excel.
+  name: keyword.other.DPL
+  match: (xlStart|xlOpenWorkbook|xlSetValue|xlSetTextStyle|xlSetFillColor|xlSetBorder|xlSaveWorkbookAs|xlCloseWorkbook|xlTerminate|xlNewWorkbook|xlAddWorksheet|xlSetWorksheetName|xlSetValues)(?=\()
 
 ...

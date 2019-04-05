@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>DPL</string>
+		<string>dpl</string>
+	</array>
+	<key>name</key>
+	<string>DIgSILENT Programming Language</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>Falta de punto y coma al final de la linea.</string>
+			<key>match</key>
+			<string>(?&lt;!;|,|\{|\}|\s)(?!^\s)\s*$|(?&lt;!;|,|\{|\}|\s)(?!^\s)\s*(?=!.*$)</string>
+			<key>name</key>
+			<string>invalid.illegal.ssraw</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>String de texto.</string>
+			<key>match</key>
+			<string>('[^']*')</string>
+			<key>name</key>
+			<string>string.quoted.single.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>comentario de la sintaxis.</string>
+			<key>match</key>
+			<string>\!.*\n*</string>
+			<key>name</key>
+			<string>comment.line.exclamation.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>números</string>
+			<key>match</key>
+			<string>(?&lt;=[\s\-\+\*\/\\=:\[\(\{,]|^)\d*\.?\d+([eE][+-]?\d)?([0-9&amp;&amp;[^\.]])*(i|j)?\b</string>
+			<key>name</key>
+			<string>constant.numeric.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Controles de Flujo</string>
+			<key>match</key>
+			<string>(do|while|for|select|if)(?=\()|(?&lt;=})(?&lt;=\})\s*else\s*(?=\{)|(break)</string>
+			<key>name</key>
+			<string>keyword.control.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Operadores lógicos.</string>
+			<key>match</key>
+			<string>\.(and|or|nand|nor|eor)\.</string>
+			<key>name</key>
+			<string>keyword.control.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Definición de parámetros.</string>
+			<key>match</key>
+			<string>\w+:(e|m|P|c|bus1|loc_name|nntap|outserv|GPSlat|GPSlon)(:\w+)*</string>
+			<key>name</key>
+			<string>variable.complex.ssraw</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Inicialización de Variables.</string>
+			<key>match</key>
+			<string>(int|double|string|set|object)\s</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Funciones de Variables.</string>
+			<key>match</key>
+			<string>(vardef|inc0|inc|intervalinc)(?=\()</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Objetos principales.</string>
+			<key>match</key>
+			<string>(SEL)(?=\.)</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Metodos de Objetos.</string>
+			<key>match</key>
+			<string>(?&lt;=\.)(ShowFullName|Execute|Add|GetFullName|GetContents|First|Next)(?=\()</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Metodos de SetSelect.</string>
+			<key>match</key>
+			<string>(?&lt;=\.)(All|GetAll|AddRed|Clear|AllElm|AllLines|AllBars|AllLoads|AllAsm|AllSym|AllTypeLne|AllBreakers|AllCloseBreakers|AllOpenBreakers)(?=\()</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Funciones del Sistema.</string>
+			<key>match</key>
+			<string>(SetOutputWindowState|incfix|fopen|fclose|AllRelevant|GetActiveScenario|ResetCalculation|EchoOff|EchoOn|GetActiveProject)(?=\()</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Funciones del Sistema para imprimir.</string>
+			<key>match</key>
+			<string>(ClearOutput|output|[sf]*printf|Info|Warn|Error)(?=\()</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Funciones de *.IntScenario.</string>
+			<key>match</key>
+			<string>(Activate|Deactivate)(?=\()</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Funciones de *.IntPrjfolder.</string>
+			<key>match</key>
+			<string>(GetProjectFolder)(?=\()</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Funciones Matemáticas.</string>
+			<key>match</key>
+			<string>(exp|min|max|strcmp)(?=\()</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Funciones con Excel.</string>
+			<key>match</key>
+			<string>(xlStart|xlOpenWorkbook|xlSetValue|xlSetTextStyle|xlSetFillColor|xlSetBorder|xlSaveWorkbookAs|xlCloseWorkbook|xlTerminate|xlNewWorkbook|xlAddWorksheet|xlSetWorksheetName|xlSetValues)(?=\()</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.DPL</string>
+</dict>
+</plist>
