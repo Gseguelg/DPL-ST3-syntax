@@ -38,7 +38,12 @@ patterns:
 # Controladores de flujo
 - comment: Controles de Flujo
   name: keyword.control.DPL
-  match: (do|while|for|select|if)(?=\()|(?<=})(?<=\})\s*else\s*(?=\{)|(break)
+  match: (do\s*|while\s*|for\s*|select|if\s*)(?=\()|(?<=})(?<=\})\s*else\s*(?=\{)|(break|continue)
+
+# Breaking script functions
+- comment: Exceptions for scripts
+  name: keyword.control.DPL
+  match: (exit)(?=\()
 
 # Operadores lógicos
 - comment: Operadores lógicos.
@@ -66,7 +71,7 @@ patterns:
 
 - comment: Metodos de Objetos. 
   name: keyword.other.DPL
-  match: (?<=\.)(ShowFullName|Execute|Add|GetFullName|GetContents|First|Next)(?=\()
+  match: (?<=\.)(ShowFullName|Execute|Add|GetFullName|GetContents|GetChildren|First|Next|GetParent)(?=\()
 
 - comment: Metodos de SetSelect. 
   name: keyword.other.DPL
@@ -79,6 +84,10 @@ patterns:
 - comment: Funciones del Sistema para imprimir.
   name: keyword.other.DPL
   match: (ClearOutput|output|[sf]*printf|Info|Warn|Error)(?=\()
+
+- comment: Funciones del Sistema aceptar argumentos.
+  name: keyword.other.DPL
+  match: (input)(?=\()
 
 - comment: Funciones de *.IntScenario.
   name: keyword.other.DPL

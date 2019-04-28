@@ -47,7 +47,15 @@
 			<key>comment</key>
 			<string>Controles de Flujo</string>
 			<key>match</key>
-			<string>(do|while|for|select|if)(?=\()|(?&lt;=})(?&lt;=\})\s*else\s*(?=\{)|(break)</string>
+			<string>(do\s*|while\s*|for\s*|select|if\s*)(?=\()|(?&lt;=})(?&lt;=\})\s*else\s*(?=\{)|(break|continue)</string>
+			<key>name</key>
+			<string>keyword.control.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Exceptions for scripts</string>
+			<key>match</key>
+			<string>(exit)(?=\()</string>
 			<key>name</key>
 			<string>keyword.control.DPL</string>
 		</dict>
@@ -95,7 +103,7 @@
 			<key>comment</key>
 			<string>Metodos de Objetos.</string>
 			<key>match</key>
-			<string>(?&lt;=\.)(ShowFullName|Execute|Add|GetFullName|GetContents|First|Next)(?=\()</string>
+			<string>(?&lt;=\.)(ShowFullName|Execute|Add|GetFullName|GetContents|GetChildren|First|Next|GetParent)(?=\()</string>
 			<key>name</key>
 			<string>keyword.other.DPL</string>
 		</dict>
@@ -120,6 +128,14 @@
 			<string>Funciones del Sistema para imprimir.</string>
 			<key>match</key>
 			<string>(ClearOutput|output|[sf]*printf|Info|Warn|Error)(?=\()</string>
+			<key>name</key>
+			<string>keyword.other.DPL</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Funciones del Sistema aceptar argumentos.</string>
+			<key>match</key>
+			<string>(input)(?=\()</string>
 			<key>name</key>
 			<string>keyword.other.DPL</string>
 		</dict>
